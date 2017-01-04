@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,21 +18,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.example.pr_idi.mydatabaseexample.Film;
+import com.example.pr_idi.mydatabaseexample.FilmData;
 import com.example.pr_idi.mydatabaseexample.R;
+import com.example.pr_idi.mydatabaseexample.RecyclerViewAdapter;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FilmData filmData;
+    private FloatingActionsMenu fabMenu;
+    private RecyclerView rv;
+    private RecyclerViewAdapter adapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //TOOLBAR-------------------------------------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.menu_fab);
+        //FLOATTING BUTTON------------------------------------------------------------------------
+        fabMenu = (FloatingActionsMenu) findViewById(R.id.menu_fab);
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
@@ -44,15 +61,33 @@ public class MainActivity extends AppCompatActivity
 
         });
 
-
+        //ACTION BAR-------------------------------------------------------------------------------
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        //NAVIGATION VIEW--------------------------------------------------------------------------
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //RECYCLE VIEW------------------------------------------------------------------------------
+        List<Film> filmList = new ArrayList<>();
+
+        filmList.add(new Film(0,"Phocahontas","Anonimo"));
+        filmList.add(new Film(1,"Jesucristo SuperStar","Dios"));
+
+
+        rv = (RecyclerView)findViewById(R.id.cardList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+
+        //filmList = filmData.getAllFilms();
+        RecyclerViewAdapter rva= new RecyclerViewAdapter(filmList);
+        rv.setAdapter(rva);
+
     }
 
     @Override
@@ -92,14 +127,18 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        boolean isSelected = false;
         Intent intent;
 
-
-        if (id == R.id.nav_principal) {
-            // Handle the camera action
-        } else if (id == R.id.nav_help) {
-            intent = new Intent(this, HelpActivity.class);
+        switch (id) {
+            case R.id.nav_principal:
+                isSelected = true;
+                break;
+            case R.id.nav_help:
+                intent = new Intent(this,HelpActivity.class);
+                startActivity(intent);
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

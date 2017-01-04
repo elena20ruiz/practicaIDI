@@ -23,37 +23,45 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_main" >
+
+    </include>
+
+
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/menu_fab"
-        android:layout_width="wrap_content"
+        android:layout_width="367dp"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         fab:fab_icon = "@drawable/ic_settings_black_24dp"
         fab:fab_addButtonColorNormal="?attr/colorPrimary"
         fab:fab_addButtonSize="normal"
-        fab:fab_labelsPosition="left">
+        fab:fab_labelsPosition="left"
+        fab:fab_labelStyle="@style/Etiquetas">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/action_insert_film"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="?attr/colorAccent"
+            fab:fab_colorNormal="@color/colorAccent"
             fab:fab_icon="@drawable/add_film"
             fab:fab_size="mini"
-            fab:fab_title="Insertar pel·lícula" />
+            fab:fab_title="Afegir pel·lícula" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/action_delete_film"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="?attr/colorAccent"
+            fab:fab_colorNormal="@color/colorAccent"
             fab:fab_icon="@drawable/deletefilm"
             fab:fab_size="mini"
             fab:fab_title="Esborrar pel·lícula" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -19,6 +19,10 @@ public class Film {
 
     private String comment;
 
+    public Film() {
+
+    }
+
     public long getId() {
         return id;
     }
@@ -79,5 +83,11 @@ public class Film {
     @Override
     public String toString() {
         return String.format("%s - %s", title, director);
+    }
+
+    public Film(long id, String title, String director) {
+        this.id = id;
+        this.title = title;
+        this.director = director;
     }
 }
