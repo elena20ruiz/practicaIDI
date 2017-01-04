@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:id="@+id/titolContent"
-            android:background=""
             android:layout_alignParentStart="true">
 
             <TextView

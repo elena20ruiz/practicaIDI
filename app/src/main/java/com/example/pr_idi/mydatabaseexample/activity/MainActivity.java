@@ -1,8 +1,8 @@
 package com.example.pr_idi.mydatabaseexample.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +23,7 @@ import com.example.pr_idi.mydatabaseexample.FilmData;
 import com.example.pr_idi.mydatabaseexample.R;
 import com.example.pr_idi.mydatabaseexample.RecyclerViewAdapter;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,10 @@ public class MainActivity extends AppCompatActivity
 
     private FilmData filmData;
     private FloatingActionsMenu fabMenu;
+    private FloatingActionButton fabCreate;
     private RecyclerView rv;
     private RecyclerViewAdapter adapter;
+    private Context context;
 
 
     @Override
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //CONTEXT-------------------------------------------------------------------------------
+        context = this;
 
         //TOOLBAR-------------------------------------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -52,6 +58,14 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onMenuExpanded() {
                 fabMenu.expand();
+                fabCreate = (FloatingActionButton) findViewById(R.id.action_insert_film);
+                fabCreate.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent insertFilmIntent = new Intent(context, CreationActivity.class);
+                        startActivity(insertFilmIntent);
+
+                    }
+                });
             }
 
             @Override
