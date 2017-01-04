@@ -16,6 +16,9 @@ public class Film {
     private int year;
     private String protagonist;
     private int critics_rate;
+    private int idTheme;
+
+
 
     private String comment;
 
@@ -79,6 +82,22 @@ public class Film {
         this.critics_rate = critics_rate;
     }
 
+    public int getIdTheme() {
+        return idTheme;
+    }
+
+    public void setIdTheme(int idTheme) {
+        this.idTheme = idTheme;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     // Will be used by the ArrayAdapter in the ListView
     @Override
     public String toString() {
@@ -89,5 +108,6 @@ public class Film {
         this.id = id;
         this.title = title;
         this.director = director;
+        this.idTheme = 0;
     }
 }

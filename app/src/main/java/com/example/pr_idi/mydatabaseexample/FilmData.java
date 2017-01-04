@@ -50,6 +50,7 @@ public class FilmData {
         values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, 2014);
         values.put(MySQLiteHelper.COLUMN_PROTAGONIST, "Do not know");
         values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, 5);
+        values.put(MySQLiteHelper.COLUMN_ID_THEME, 0);
 
         // Actual insertion of the data using the values variable
         long insertId = database.insert(MySQLiteHelper.TABLE_FILMS, null,
@@ -96,6 +97,25 @@ public class FilmData {
         // make sure to close the cursor
         cursor.close();
         return comments;
+    }
+
+    public List<Film> orderByTitle(){
+
+        List<Film> comments = new ArrayList<>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
+                allColumns, null, null, null, null, MySQLiteHelper.COLUMN_TITLE);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Film comment = cursorToFilm(cursor);
+            comments.add(comment);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return comments;
+
     }
 
     private Film cursorToFilm(Cursor cursor) {

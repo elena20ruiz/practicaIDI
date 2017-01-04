@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
 
-        //filmList = filmData.getAllFilms();
+        //filmList = filmData.orderByTitle();
         RecyclerViewAdapter rva= new RecyclerViewAdapter(filmList);
         rv.setAdapter(rva);
 
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity
                 isSelected = true;
                 break;
             case R.id.nav_help:
-                intent = new Intent(this,HelpActivity.class);
+                intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);
         }
 

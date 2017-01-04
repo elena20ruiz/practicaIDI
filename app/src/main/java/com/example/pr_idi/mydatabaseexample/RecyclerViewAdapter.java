@@ -34,6 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.title_film.setText(f.getTitle());
         holder.director.setText(f.getDirector());
+        if(f.getIdTheme() == 0) holder.imageView.setImageResource(R.mipmap.ic_launcher);
     }
 
 
@@ -54,6 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         CardView cv;
         TextView title_film;
         TextView director;
+        ImageView imageView;
 
         FilmViewHolder(View itemView) {
             super(itemView);
@@ -61,6 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             cv =            (CardView) itemView.findViewById(R.id.card_view);
             title_film =    (TextView) itemView.findViewById(R.id.title_film);
             director =      (TextView) itemView.findViewById(R.id.director);
+            imageView =     (ImageView) itemView.findViewById(R.id.image_theme);
         }
     }
 

@@ -20,6 +20,8 @@
     <style name="Etiquetas">
         <item name="android:background">@color/colorPrimaryLight</item>
         <item name="android:textColor">@color/colorClear</item>
+        <item name="android:padding">@dimen/mini_padding</item>
+        <item name="android:radioButtonStyle">@dimen/fab_border_width</item>
     </style>
 
 </resources>
