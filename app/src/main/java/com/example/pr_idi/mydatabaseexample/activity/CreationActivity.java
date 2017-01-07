@@ -2,8 +2,6 @@ package com.example.pr_idi.mydatabaseexample.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,8 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 
+import com.example.pr_idi.mydatabaseexample.FilmData;
 import com.example.pr_idi.mydatabaseexample.R;
 
 public class CreationActivity extends AppCompatActivity {
@@ -24,6 +25,9 @@ public class CreationActivity extends AppCompatActivity {
     private EditText puntuacio;
     private EditText pais;
 
+    private FilmData filmData;
+    private ImageButton back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +36,23 @@ public class CreationActivity extends AppCompatActivity {
         //INICIALITZACIÓ DEL TOOLBAR --------------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        //INICIALITZACIO DEL BOTO BACK -------------------------------------------------------
+        back = (ImageButton) findViewById(R.id.gobackbutton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         //AMAGAR EL TECLAT INICIALMENT --------------------------------------------------------
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        //CREAR INSTANCIA DE LA BD ------------------------------------------------------------
+        filmData = new FilmData(this);
+        filmData.open();
 
         //INICIALITZACIÓ DELS CAMPS D'EDICIÓ --------------------------------------------------------
         titol = (EditText) findViewById(R.id.titol);
@@ -68,6 +86,17 @@ public class CreationActivity extends AppCompatActivity {
                             String putuacioFloat = puntuacio.getText().toString();
                             if (putuacioFloat.isEmpty())
                                 ShowDialog("Dades Mal Introduides", "S'ha d'introduir la nota de les crítiques.");
+                            else{
+                                int anyEstrena = Integer.parseInt(anyText);
+                                int puntuacio = Integer.parseInt(putuacioFloat);
+                                if(anyEstrena < 1950 || anyEstrena > 2017) ShowDialog("Dades Mal Introduides", "L'any d'estrena només pot anar del 1970 al 2017.");
+                                else {
+                                    if(puntuacio < 0 || puntuacio > 10) ShowDialog("Dades Mal Introduides", "La puntuació només pot anar del 0 al 10.");
+                                    else {
+                                        filmData.createCompleteFile(titolText,directorText,protagonistaText,anyEstrena,puntuacio,paisText);
+                                    }
+                                }
+                            }
                         }
                     }
                 }

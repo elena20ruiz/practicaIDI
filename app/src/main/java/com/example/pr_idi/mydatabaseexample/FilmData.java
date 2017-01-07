@@ -36,6 +36,27 @@ public class FilmData {
         dbHelper.close();
     }
 
+    public void createCompleteFile(String title, String director, String protagonist, int year, int puntuation, String country){
+        ContentValues values = new ContentValues();
+        Log.d("Creating", "Creating " + title + " " + director);
+
+        // Add data: Note that this method only provides title and director
+        // Must modify the method to add the full data
+        values.put(MySQLiteHelper.COLUMN_TITLE, title);
+        values.put(MySQLiteHelper.COLUMN_DIRECTOR, director);
+
+        // Invented data
+        values.put(MySQLiteHelper.COLUMN_COUNTRY, country);
+        values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, year);
+        values.put(MySQLiteHelper.COLUMN_PROTAGONIST, protagonist);
+        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, puntuation);
+        values.put(MySQLiteHelper.COLUMN_ID_THEME, 0);
+
+        // Actual insertion of the data using the values variable
+        long insertId = database.insert(MySQLiteHelper.TABLE_FILMS, null,
+                values);
+    }
+
     public Film createFilm(String title, String director) {
         ContentValues values = new ContentValues();
         Log.d("Creating", "Creating " + title + " " + director);

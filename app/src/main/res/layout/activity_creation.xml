@@ -19,6 +19,25 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gobackbutton"
+                android:background="@null"
+                android:src="@drawable/ic_keyboard_backspace_white_24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Afegir Pel·lícula"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="normal|bold"
+                android:paddingLeft="10dp"
+                android:textColorHint="@android:color/white" />
+
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

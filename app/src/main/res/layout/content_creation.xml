@@ -130,7 +130,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:hint="Escriu un any entre 1970 i l'any actual"
                 android:ems="10"
                 android:layout_below="@+id/calendarTitle"
@@ -254,7 +254,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:hint="Escriu una puntuació entre 0 i 10"
                 android:ems="10"
                 android:layout_below="@+id/notaTitle"
