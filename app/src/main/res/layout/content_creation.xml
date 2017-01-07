@@ -5,39 +5,53 @@
     android:id="@+id/content_creation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.pr_idi.mydatabaseexample.activity.CreationActivity"
     tools:showIn="@layout/activity_creation">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_height="match_parent">
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/titolContent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:id="@+id/titolContent"
             android:layout_alignParentStart="true">
 
             <TextView
-                android:text="Director"
-                android:layout_width="wrap_content"
+                android:text="Títol"
+                android:layout_width="match_parent"
+                android:textColor="@color/bright_foreground_material_dark"
                 android:layout_height="wrap_content"
                 android:id="@+id/titolTitle"
+                android:background="@color/colorPrimary"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
+                android:paddingTop="7dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="7dp"
                 android:layout_marginTop="0dp" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:hint="Escriu el títol"
                 android:ems="10"
                 android:layout_below="@+id/titolTitle"
                 android:layout_alignParentStart="true"
@@ -48,35 +62,220 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cardView"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="63dp">
+        android:id="@+id/paisContent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/titolContent">
 
         <RelativeLayout
-            android:paddingTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titolContent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="País"
+                android:layout_width="match_parent"
+                android:textColor="@color/bright_foreground_material_dark"
+                android:layout_height="wrap_content"
+                android:id="@+id/paisTitle"
+                android:background="@color/colorPrimary"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="7dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="7dp"
+                android:layout_marginTop="0dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Escriu el país"
+                android:ems="10"
+                android:layout_below="@+id/paisTitle"
+                android:layout_alignParentStart="true"
+                android:id="@+id/pais" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendarContent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/paisContent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="Any d'estrena"
+                android:layout_width="match_parent"
+                android:textColor="@color/bright_foreground_material_dark"
+                android:layout_height="wrap_content"
+                android:id="@+id/calendarTitle"
+                android:background="@color/colorPrimary"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="7dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="7dp"
+                android:layout_marginTop="0dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Escriu un any entre 1970 i l'any actual"
+                android:ems="10"
+                android:layout_below="@+id/calendarTitle"
+                android:layout_alignParentStart="true"
+                android:id="@+id/year" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/directorContent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/calendarContent"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true">
 
             <TextView
                 android:text="Director"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="@color/bright_foreground_material_dark"
                 android:layout_height="wrap_content"
                 android:id="@+id/directorTitle"
+                android:background="@color/colorPrimary"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
+                android:paddingTop="7dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="7dp"
                 android:layout_marginTop="0dp" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:hint="Escriu el director"
                 android:ems="10"
                 android:layout_below="@+id/directorTitle"
                 android:layout_alignParentStart="true"
                 android:id="@+id/director" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/protagonistaContent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/directorContent"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="Protagonista"
+                android:layout_width="match_parent"
+                android:textColor="@color/bright_foreground_material_dark"
+                android:layout_height="wrap_content"
+                android:id="@+id/protagonistaTitle"
+                android:background="@color/colorPrimary"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="7dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="7dp"
+                android:layout_marginTop="0dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Escriu el nom del protagonista"
+                android:ems="10"
+                android:layout_below="@+id/protagonistaTitle"
+                android:layout_alignParentStart="true"
+                android:id="@+id/protagonista" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notaContent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/protagonistaContent"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="Nota de les Crítiques"
+                android:layout_width="match_parent"
+                android:textColor="@color/bright_foreground_material_dark"
+                android:layout_height="wrap_content"
+                android:id="@+id/notaTitle"
+                android:background="@color/colorPrimary"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="7dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="7dp"
+                android:layout_marginTop="0dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Escriu una puntuació entre 0 i 10"
+                android:ems="10"
+                android:layout_below="@+id/notaTitle"
+                android:layout_alignParentStart="true"
+                android:id="@+id/nota" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_afegir"
+        android:text="Crear Pel·lícula"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/bright_foreground_material_dark"
+        android:layout_below="@+id/notaContent"
+        android:layout_alignParentEnd="true"
+        android:onClick="ValidarForm"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
 </RelativeLayout>
