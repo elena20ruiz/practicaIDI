@@ -125,4 +125,26 @@ public class FilmData {
         film.setDirector(cursor.getString(2));
         return film;
     }
+
+    public List<Film> getAuthorFilms(String query) {
+
+        List<Film> comments = new ArrayList<>();
+        String ss[] = new String[1];
+        ss[0] = query;
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
+                    allColumns,MySQLiteHelper.COLUMN_PROTAGONIST+"=?",ss,null,null,MySQLiteHelper.COLUMN_TITLE);
+
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Film comment = cursorToFilm(cursor);
+            comments.add(comment);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return comments;
+
+    }
 }
