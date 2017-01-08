@@ -171,6 +171,10 @@ public class MainActivity extends AppCompatActivity
                 intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.nav_slideshow:
+                intent = new Intent(this, RecycleViewForYear.class);
+                startActivity(intent);
+                break;
             case R.id.about:
                 ShowDialog("About","Hecho por: PickAnEvent.SA \nContacto: support@pickanevent.com");
                 break;
