@@ -24,6 +24,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:id="@+id/titolContent">
 
         <RelativeLayout
@@ -63,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/paisContent"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         android:layout_below="@+id/titolContent">
 
         <RelativeLayout
@@ -103,7 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/calendarContent"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         android:layout_below="@+id/paisContent">
 
         <RelativeLayout
@@ -144,7 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/directorContent"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         android:layout_below="@+id/calendarContent"
         android:layout_alignParentStart="true">
 
@@ -185,7 +186,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/protagonistaContent"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         android:layout_below="@+id/directorContent"
         android:layout_alignParentStart="true">
 
@@ -226,7 +227,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notaContent"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         android:layout_below="@+id/protagonistaContent"
         android:layout_alignParentStart="true">
 

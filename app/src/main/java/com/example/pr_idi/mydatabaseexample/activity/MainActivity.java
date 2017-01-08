@@ -3,9 +3,11 @@ package com.example.pr_idi.mydatabaseexample.activity;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -168,12 +170,36 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_help:
                 intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.about:
+                ShowDialog("About","Hecho por: PickAnEvent.SA \nContacto: support@pickanevent.com");
+                break;
+            case R.id.help:
+                ShowDialog("Help","Con esta aplicación, podras consultar y buscar todos los eventos que sean de tu interés!\nDes de la vista principal, podras ver todos los eventos, grupos y amistades a los que assistes o sigues, y a través de la lupa que se encuentra arriva de la pantalla podràs buscar todo lo que quieras! :D");
+                break;
         }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void ShowDialog(String title, String content){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(content);
+        if(title.equals("About")) alertDialog.setIcon(android.R.drawable.ic_menu_info_details);
+        else alertDialog.setIcon(android.R.drawable.ic_menu_help);
+        //alertDialog.setFeatureDrawableResource(question_mark,0);
+        alertDialog.setCancelable(true);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 }
