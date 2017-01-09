@@ -22,7 +22,9 @@ public class FilmData {
 
     // Here we only select Title and Director, must select the appropriate columns
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_TITLE, MySQLiteHelper.COLUMN_DIRECTOR};
+            MySQLiteHelper.COLUMN_TITLE, MySQLiteHelper.COLUMN_DIRECTOR,
+            MySQLiteHelper.COLUMN_PROTAGONIST, MySQLiteHelper.COLUMN_COUNTRY,
+            MySQLiteHelper.COLUMN_YEAR_RELEASE, MySQLiteHelper.COLUMN_CRITICS_RATE, MySQLiteHelper.COLUMN_ID_THEME};
 
     public FilmData(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -144,6 +146,10 @@ public class FilmData {
         film.setId(cursor.getLong(0));
         film.setTitle(cursor.getString(1));
         film.setDirector(cursor.getString(2));
+        film.setProtagonist(cursor.getString(3));
+        film.setCountry(cursor.getString(4));
+        film.setYear(cursor.getInt(5));
+        film.setCritics_rate(cursor.getInt(6));
         return film;
     }
 

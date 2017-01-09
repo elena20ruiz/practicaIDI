@@ -1,5 +1,7 @@
 package com.example.pr_idi.mydatabaseexample;
 
+import android.util.Log;
+
 /**
  * Film
  * Created by pr_idi on 10/11/16.
@@ -64,6 +66,7 @@ public class Film {
 
     public void setYear(int year) {
         this.year = year;
+        Log.d("thisYear",String.valueOf(this.year));
     }
 
     public String getProtagonist() {
@@ -101,7 +104,7 @@ public class Film {
     // Will be used by the ArrayAdapter in the ListView
     @Override
     public String toString() {
-        return String.format("%s - %s", title, director);
+        return String.format("%s - %s - %s - %s - %d - %d", title, director,protagonist,country,year,critics_rate);
     }
 
     public Film(long id, String title, String director) {

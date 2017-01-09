@@ -2,19 +2,20 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_view"
+    android:id="@+id/card_view2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="200dp">
 
         <LinearLayout
             android:orientation="horizontal"
+            android:id="@+id/cardContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="160dp"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp">
@@ -103,57 +104,63 @@
                         android:layout_toEndOf="@+id/protagonista" />
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:text="País:"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/pais"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:fontFamily="sans-serif-condensed" />
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:text="TextView"
-                        android:id="@+id/paisName"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        <TextView
+                            android:text="País:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pais"
+                            android:paddingTop="8dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:fontFamily="sans-serif-condensed" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:id="@+id/paisName"
+                            android:paddingTop="8dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/pais" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@+id/pais" />
-                </RelativeLayout>
+                        android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                        <TextView
+                            android:text="Any d'Estrena:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/any"
+                            android:paddingTop="8dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:fontFamily="sans-serif-condensed" />
 
-                    <TextView
-                        android:text="Any d'Estrena:"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/any"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:fontFamily="sans-serif-condensed" />
-
-                    <TextView
-                        android:text="TextView"
-                        android:id="@+id/anyName"
-                        android:paddingTop="8dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@+id/any" />
-                </RelativeLayout>
+                        <TextView
+                            android:text="TextView"
+                            android:id="@+id/anyName"
+                            android:paddingTop="8dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/any" />
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -177,7 +184,7 @@
                         android:numStars="5"
                         android:scaleX="0.5"
                         android:scaleY="0.5"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="10dp"
                         android:maxHeight="57dp"
                         android:maxWidth="70dp"
                         android:layout_alignParentTop="true" />
@@ -186,7 +193,7 @@
                         android:text="TextView"
                         android:id="@+id/puntuacioName"
                         android:paddingTop="8dp"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="20dp"
                         android:paddingRight="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -201,6 +208,57 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/cardContent"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_weight="50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:text="ESBORRAR"
+                    android:background="@drawable/button_borrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp">
+
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="50"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:text="EDITAR"
+                    android:background="@drawable/button_editar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp">
+
+                </Button>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/id"/>
 
     </RelativeLayout>
 

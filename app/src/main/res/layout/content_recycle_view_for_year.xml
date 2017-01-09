@@ -13,4 +13,9 @@
     tools:context="com.example.pr_idi.mydatabaseexample.activity.RecycleViewForYear"
     tools:showIn="@layout/activity_recycle_view_for_year">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cardList2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>
