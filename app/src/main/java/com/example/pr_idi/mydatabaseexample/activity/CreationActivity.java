@@ -1,6 +1,7 @@
 package com.example.pr_idi.mydatabaseexample.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
-import com.example.pr_idi.mydatabaseexample.FilmData;
-import com.example.pr_idi.mydatabaseexample.R;
+import com.example.pr_idi.mydatabaseexample.*;
 
 public class CreationActivity extends AppCompatActivity {
 
@@ -89,11 +89,14 @@ public class CreationActivity extends AppCompatActivity {
                             else{
                                 int anyEstrena = Integer.parseInt(anyText);
                                 int puntuacio = Integer.parseInt(putuacioFloat);
-                                if(anyEstrena < 1950 || anyEstrena > 2017) ShowDialog("Dades Mal Introduides", "L'any d'estrena només pot anar del 1970 al 2017.");
+                                if(anyEstrena < 1900 || anyEstrena > 2017) ShowDialog("Dades Mal Introduides", "L'any d'estrena només pot anar del 1970 al 2017.");
                                 else {
                                     if(puntuacio < 0 || puntuacio > 10) ShowDialog("Dades Mal Introduides", "La puntuació només pot anar del 0 al 10.");
                                     else {
                                         filmData.createCompleteFile(titolText,directorText,protagonistaText,anyEstrena,puntuacio,paisText);
+                                        Intent intent = new Intent(this, com.example.pr_idi.mydatabaseexample.activity.MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 }
                             }

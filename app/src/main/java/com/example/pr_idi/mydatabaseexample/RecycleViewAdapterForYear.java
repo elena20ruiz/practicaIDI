@@ -1,12 +1,17 @@
 package com.example.pr_idi.mydatabaseexample;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,8 +26,10 @@ import java.util.List;
 public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewAdapterForYear.FilmViewHolderForYear> {
 
     List<Film> films;
+    Context context;
 
-    public RecycleViewAdapterForYear(List<Film> films){
+    public RecycleViewAdapterForYear(List<Film> films, Context context){
+        this.context = context;
         this.films = films;
     }
 
@@ -37,7 +44,7 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
     @Override
     public void onBindViewHolder(FilmViewHolderForYear holder, int i) {
 
-        Film f = films.get(i);
+        final Film f = films.get(i);
 
         Log.e("film",f.toString());
 
@@ -48,6 +55,21 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
         holder.year.setText(String.valueOf(f.getYear()));
         holder.rating.setText(String.valueOf(f.getCritics_rate()) +"/10");
         holder.id.setText(String.valueOf(f.getId()));
+
+        holder.botoborrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FilmData filmData = new FilmData(context);
+                filmData.open();
+                long id = f.getId();
+                filmData.deleteFilmWithId((int)id);
+
+                Intent intent = ((Activity)context).getIntent();
+                ((Activity)context).finish();
+                context.startActivity(intent);
+            }
+        });
+
         if(f.getIdTheme() == 0) holder.imageView.setImageResource(R.mipmap.ic_launcher);
     }
 
@@ -75,6 +97,7 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
         TextView rating;
         TextView id;
         ImageView imageView;
+        Button botoborrar;
 
         FilmViewHolderForYear(View itemView) {
             super(itemView);
@@ -88,6 +111,7 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
             country =    (TextView) itemView.findViewById(R.id.paisName);
             rating =      (TextView) itemView.findViewById(R.id.puntuacioName);
             id =      (TextView) itemView.findViewById(R.id.id);
+            botoborrar =      (Button) itemView.findViewById(R.id.borrar);
 
         }
     }

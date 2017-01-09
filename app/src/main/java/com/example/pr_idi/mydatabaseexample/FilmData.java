@@ -105,6 +105,12 @@ public class FilmData {
                 + " = " + id, null);
     }
 
+    public void deleteFilmWithId(int id) {
+        System.out.println("Film deleted with id: " + id);
+        database.delete(MySQLiteHelper.TABLE_FILMS, MySQLiteHelper.COLUMN_ID
+                + " = " + id, null);
+    }
+
     public List<Film> getAllFilms() {
         List<Film> comments = new ArrayList<>();
 

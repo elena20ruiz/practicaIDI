@@ -67,7 +67,7 @@ public class RecycleViewForYear extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
 
-        RecycleViewAdapterForYear rva= new RecycleViewAdapterForYear(filmList);
+        RecycleViewAdapterForYear rva= new RecycleViewAdapterForYear(filmList,this);
         rv.setAdapter(rva);
 
     }
