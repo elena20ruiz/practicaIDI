@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
+        //getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
 
 
         getMenuInflater().inflate(R.menu.menu_search,menu);
@@ -195,8 +195,9 @@ public class MainActivity extends AppCompatActivity
                 ShowDialog("About","Fet per: David Aleu Moseguí \n              Elena Ruiz Cano \n \nContacto: david.aleu@est.fib.upc.edu\n                  elena.ruiz@est.fib.upc.edu");
                 break;
             case R.id.help:
-                ShowDialog("Help"," 1.Com puc crear una nova pel·lícula? \nA la part de baix a la dreta es troba un botó, on al clicar s'obra una nova pantalla per poder introduir tota la informació respecte la pel·lícula\n \n" +
-                                     "2. Com puc esborrar o editar una pel·lícula? \nEn el menú que s'ens obra al clicar el botó que es troba amunt a l'esquerra, s'ha de clicar l'opció de Vista Detallada on es veuran totes les pel·lícules on abaix de cadascuna trobem dos botons un per borrar la corresponent pel·lícula, y l'altre per editar la seva valoració.\n");
+                ShowDialog("Help"," 1. Com puc crear una nova pel·lícula? \nA la part de baix a la dreta es troba un botó, on al clicar s'obra una nova pantalla per poder introduir tota la informació respecte la pel·lícula.\n \n" +
+                                     "2. Com puc esborrar o editar una pel·lícula? \nEn el menú que se'ns obre en clicar el botó que es troba amunt a l'esquerra, s'ha de clicar l'opció de Vista Detallada, on es veuran totes les pel·lícules on abaix de cadascuna trobem dos botons un per esborrar la corresponent pel·lícula, i l'altre per editar la seva valoració.\n \n" +
+                        "3. Com puc veure tota la informació de les pel·lícules? \nEn el menú que se'ns obre en clicar el botó que es troba amunt a l'esquerra, s'ha de clicar l'opció de Vista Detallada, on es veuran totes les pel·lícules amb tota la seva informació.\n");
                 break;
         }
 
