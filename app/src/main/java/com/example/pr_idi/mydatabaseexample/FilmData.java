@@ -128,6 +128,13 @@ public class FilmData {
         return comments;
     }
 
+    public void updateFilm(int punt, int id){
+        ContentValues cv = new ContentValues();
+        cv.put(MySQLiteHelper.COLUMN_CRITICS_RATE,punt);
+
+        database.update(MySQLiteHelper.TABLE_FILMS,cv,MySQLiteHelper.COLUMN_ID + "=" + id,null);
+    }
+
     public List<Film> orderByTitle(){
 
         List<Film> comments = new ArrayList<>();
