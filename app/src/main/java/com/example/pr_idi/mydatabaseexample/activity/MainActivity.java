@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView rv;
     private RecyclerViewAdapter adapter;
     private Context context;
+    private Boolean aquesta;
 
 
     @Override
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        aquesta = false;
 
         //CONTEXT-------------------------------------------------------------------------------
         context = this;
@@ -193,6 +197,17 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
         alertDialog.show();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(aquesta==false) aquesta = true;
+        else {
+            Intent intent = new Intent(this, com.example.pr_idi.mydatabaseexample.activity.MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
