@@ -69,6 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView title_film;
         TextView protagonist;
         ImageView imageView;
+        RatingBar ratingBar;
 
         FilmViewHolder(View itemView) {
             super(itemView);
