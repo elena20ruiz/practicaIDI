@@ -43,6 +43,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
+
+        database.execSQL("INSERT INTO " + TABLE_FILMS + "(title,country,year_release,director,protagonist,critics_rate,thematic) VALUES ('Deadpool','Estats Units',2016,'Tim Miller','Ryan Reynolds',8,2)") ;
+        database.execSQL("INSERT INTO " + TABLE_FILMS + "(title,country,year_release,director,protagonist,critics_rate,thematic) VALUES ('Zootrópolis','Estats Units',2016,'Byron Howard','Ginnifer Goodwin',6,6)") ;
+        database.execSQL("INSERT INTO " + TABLE_FILMS + "(title,country,year_release,director,protagonist,critics_rate,thematic) VALUES ('Zoolander 2','Estats Units',2016,'Ben Stiller','Ben Stiller',3,1)") ;
+        database.execSQL("INSERT INTO " + TABLE_FILMS + "(title,country,year_release,director,protagonist,critics_rate,thematic) VALUES ('The Martian 2','Estats Units',2015,'Ridley Scott','Matt Damon',9,5)") ;
     }
 
     @Override
