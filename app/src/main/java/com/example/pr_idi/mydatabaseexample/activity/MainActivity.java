@@ -56,6 +56,11 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        filmData = new FilmData(this);
+        filmData.open();
+            //inizialitzaData();
+
         setContentView(R.layout.activity_main);
 
         aquesta = false;
@@ -90,9 +95,8 @@ public class MainActivity extends AppCompatActivity
 
 
         //RECYCLE VIEW------------------------------------------------------------------------------
-        filmData = new FilmData(this);
-        filmData.open();
-        List<Film> filmList = filmData.getAllFilmsByYear();
+
+        List<Film> filmList = filmData.getAllFilmsByTitle();
 
         rv = (RecyclerView)findViewById(R.id.cardList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -101,9 +105,15 @@ public class MainActivity extends AppCompatActivity
         //filmList = filmData.orderByTitle();
         RecyclerViewAdapter rva = new RecyclerViewAdapter(filmList);
         rv.setAdapter(rva);
-
     }
 
+    private void inizialitzaData() {
+        filmData.createCompleteFile("Ben Hur", "Timur Bekmambetov", "Jack Huston", 2016, 8,"Estados Unidos", 2);
+        filmData.createCompleteFile("El mensajero", "Ric Roman Waugh", "Dwayne Johnson", 2013, 7,"Estados Unidos", 2);
+        filmData.createCompleteFile("El lado bueno de las cosas", "David O. Russell", "Bradley Cooper", 2012, 8,"Estados Unidos", 0);
+        filmData.createCompleteFile("La ola", "Dennis Gansel", "Jürgen Vogel", 2008, 9,"Alemania", 0);
+        filmData.createCompleteFile("Aloha", "Cameron Crowe", "Bradley Cooper", 2015, 5,"Estados Unidos", 1);
+    }
 
     @Override
     public void onBackPressed() {
@@ -130,7 +140,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                List<Film> filmList = filmData.getAllFilmsByYear();
+                List<Film> filmList = filmData.getAllFilmsByTitle();
                 RecyclerViewAdapter rva = new RecyclerViewAdapter(filter(filmList,query));
                 rv.setAdapter(rva);
                 return false;
@@ -139,7 +149,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                List<Film> filmList = filmData.getAllFilmsByYear();
+                List<Film> filmList = filmData.getAllFilmsByTitle();
                 RecyclerViewAdapter rva = new RecyclerViewAdapter(filter(filmList,newText));
                 rv.setAdapter(rva);
                 return false;
@@ -184,7 +194,8 @@ public class MainActivity extends AppCompatActivity
                 ShowDialog("About","Fet per: David Aleu Moseguí \n              Elena Ruiz Cano \n \nContacto: david.aleu@est.fib.upc.edu\n                  elena.ruiz@est.fib.upc.edu");
                 break;
             case R.id.help:
-                ShowDialog("Help","");
+                ShowDialog("Help"," 1.Com puc crear una nova pel·lícula? \nA la part de baix a la dreta es troba un botó, on al clicar s'obra una nova pantalla per poder introduir tota la informació respecte la pel·lícula\n \n" +
+                                     "2. Com puc esborrar o editar una pel·lícula? \nEn el menú que s'ens obra al clicar el botó que es troba amunt a l'esquerra, s'ha de clicar l'opció de Vista Detallada on es veuran totes les pel·lícules on abaix de cadascuna trobem dos botons un per borrar la corresponent pel·lícula, y l'altre per editar la seva valoració.\n");
                 break;
         }
 

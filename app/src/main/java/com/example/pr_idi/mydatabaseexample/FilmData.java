@@ -135,24 +135,6 @@ public class FilmData {
         database.update(MySQLiteHelper.TABLE_FILMS,cv,MySQLiteHelper.COLUMN_ID + "=" + id,null);
     }
 
-    public List<Film> orderByTitle(){
-
-        List<Film> comments = new ArrayList<>();
-
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
-                allColumns, null, null, null, null, MySQLiteHelper.COLUMN_TITLE);
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            Film comment = cursorToFilm(cursor);
-            comments.add(comment);
-            cursor.moveToNext();
-        }
-        // make sure to close the cursor
-        cursor.close();
-        return comments;
-
-    }
 
     private Film cursorToFilm(Cursor cursor) {
         Film film = new Film();
@@ -187,5 +169,23 @@ public class FilmData {
         cursor.close();
         return comments;
 
+    }
+
+    public List<Film> getAllFilmsByTitle() {
+
+        List<Film> comments = new ArrayList<>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
+                allColumns, null, null, null, null, MySQLiteHelper.COLUMN_TITLE);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Film comment = cursorToFilm(cursor);
+            comments.add(comment);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return comments;
     }
 }
