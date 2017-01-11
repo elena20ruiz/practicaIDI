@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +36,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.title_film.setText(f.getTitle());
         holder.director.setText(f.getDirector());
+
+        float auxRat = (float) f.getCritics_rate();
+        auxRat = auxRat/2;
+        holder.rat.setRating(auxRat);
+
         if(f.getIdTheme() == 0) holder.imageView.setImageResource(R.drawable.drama);
         else if(f.getIdTheme() == 1) holder.imageView.setImageResource(R.drawable.comedy);
         else if(f.getIdTheme() == 2) holder.imageView.setImageResource(R.drawable.action);
@@ -64,6 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView title_film;
         TextView director;
         ImageView imageView;
+        RatingBar rat;
 
         FilmViewHolder(View itemView) {
             super(itemView);
@@ -72,6 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             title_film =    (TextView) itemView.findViewById(R.id.title_film);
             director =      (TextView) itemView.findViewById(R.id.director);
             imageView =     (ImageView) itemView.findViewById(R.id.image_theme);
+            rat = (RatingBar) itemView.findViewById(R.id.ratingBar);
         }
     }
 
