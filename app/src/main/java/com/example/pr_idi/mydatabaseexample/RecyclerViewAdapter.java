@@ -78,6 +78,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             cv =            (CardView) itemView.findViewById(R.id.card_view);
             title_film =    (TextView) itemView.findViewById(R.id.title_film);
             imageView =     (ImageView) itemView.findViewById(R.id.image_theme);
+            protagonist = (TextView) itemView.findViewById(R.id.protagonist);
         }
     }
 
