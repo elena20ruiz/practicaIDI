@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SearchViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,19 +33,24 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+
+
+
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
 
     private FilmData filmData;
     private FloatingActionButton fabMenu;
     private FloatingActionButton fabCreate;
     private RecyclerView rv;
-    private RecyclerViewAdapter adapter;
     private Context context;
     private Boolean aquesta;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,19 +94,16 @@ public class MainActivity extends AppCompatActivity
         filmData.open();
         List<Film> filmList = filmData.getAllFilmsByYear();
 
-        /*filmList.add(new Film(0,"Phocahontas","Anonimo"));
-        filmList.add(new Film(1,"Jesucristo SuperStar","Dios"));*/
-
-
         rv = (RecyclerView)findViewById(R.id.cardList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
 
         //filmList = filmData.orderByTitle();
-        RecyclerViewAdapter rva= new RecyclerViewAdapter(filmList);
+        RecyclerViewAdapter rva = new RecyclerViewAdapter(filmList);
         rv.setAdapter(rva);
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -117,22 +120,34 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
 
+
+        getMenuInflater().inflate(R.menu.menu_search,menu);
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo( searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
 
+                List<Film> filmList = filmData.getAllFilmsByYear();
+                RecyclerViewAdapter rva = new RecyclerViewAdapter(filter(filmList,query));
+                rv.setAdapter(rva);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                List<Film> filmList = filmData.getAllFilmsByYear();
+                RecyclerViewAdapter rva = new RecyclerViewAdapter(filter(filmList,newText));
+                rv.setAdapter(rva);
+                return false;
+            }
+        });
         return true;
     }
 
-    @Override
-    public boolean onSearchRequested(){
-
-        Bundle appData = new Bundle();
-        appData.putString("hello", "world");
-        startSearch(null, false, appData, false);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -221,5 +236,22 @@ public class MainActivity extends AppCompatActivity
             rv.setAdapter(rva);
         }
     }
+
+
+
+    //AUXILIAR SEARCH
+    private static List<Film> filter(List<Film> models, String query) {
+        final String lowerCaseQuery = query.toLowerCase();
+
+        final List<Film> filteredModelList = new ArrayList<>();
+        for (Film model : models) {
+            final String text = model.getProtagonist().toLowerCase();
+            if (text.contains(lowerCaseQuery)) {
+                filteredModelList.add(model);
+            }
+        }
+        return filteredModelList;
+    }
+
 
 }
