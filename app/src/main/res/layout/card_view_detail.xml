@@ -175,12 +175,15 @@
                     <RatingBar
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
+                        android:id="@+id/ratingBar"
                         android:numStars="5"
                         android:scaleX="0.5"
                         android:scaleY="0.5"
+                        android:isIndicator="true"
                         android:layout_marginLeft="10dp"
                         android:maxHeight="57dp"
                         android:maxWidth="70dp"
+                        android:stepSize="0.5"
                         android:layout_alignParentTop="true" />
 
                     <TextView

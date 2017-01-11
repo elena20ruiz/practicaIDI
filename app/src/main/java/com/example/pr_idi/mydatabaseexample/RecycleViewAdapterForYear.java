@@ -4,6 +4,7 @@ package com.example.pr_idi.mydatabaseexample;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Rating;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -55,6 +57,10 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
         holder.year.setText(String.valueOf(f.getYear()));
         holder.rating.setText(String.valueOf(f.getCritics_rate()) +"/10");
         holder.id.setText(String.valueOf(f.getId()));
+
+        float auxRat = (float) f.getCritics_rate();
+        auxRat = auxRat/2;
+        holder.rat.setRating(auxRat);
 
         holder.botoborrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +111,7 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
         TextView id;
         ImageView imageView;
         Button botoborrar;
+        RatingBar rat;
 
         FilmViewHolderForYear(View itemView) {
             super(itemView);
@@ -119,6 +126,8 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
             rating =      (TextView) itemView.findViewById(R.id.puntuacioName);
             id =      (TextView) itemView.findViewById(R.id.id);
             botoborrar =      (Button) itemView.findViewById(R.id.borrar);
+            rat = (RatingBar) itemView.findViewById(R.id.ratingBar);
+
 
         }
     }

@@ -157,22 +157,19 @@ public class MainActivity extends AppCompatActivity
         Intent intent;
 
         switch (id) {
-            case R.id.nav_principal:
-                isSelected = true;
-                break;
-            case R.id.nav_help:
-                intent = new Intent(this, HelpActivity.class);
-                startActivity(intent);
-                break;
             case R.id.nav_slideshow:
                 intent = new Intent(this, RecycleViewForYear.class);
                 startActivity(intent);
                 break;
+            case R.id.nav_manage:
+                intent = new Intent(this, CreationActivity.class);
+                startActivity(intent);
+                break;
             case R.id.about:
-                ShowDialog("About","Hecho por: PickAnEvent.SA \nContacto: support@pickanevent.com");
+                ShowDialog("About","Fet per: David Aleu Moseguí \n              Elena Ruiz Cano \n \nContacto: david.aleu@est.fib.upc.edu\n                  elena.ruiz@est.fib.upc.edu");
                 break;
             case R.id.help:
-                ShowDialog("Help","Con esta aplicación, podras consultar y buscar todos los eventos que sean de tu interés!\nDes de la vista principal, podras ver todos los eventos, grupos y amistades a los que assistes o sigues, y a través de la lupa que se encuentra arriva de la pantalla podràs buscar todo lo que quieras! :D");
+                ShowDialog("Help","");
                 break;
         }
 
@@ -202,7 +199,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume(){
         super.onResume();
-        if(aquesta==false) aquesta = true;
+        if(!aquesta) aquesta = true;
         else {
             Intent intent = new Intent(this, com.example.pr_idi.mydatabaseexample.activity.MainActivity.class);
             startActivity(intent);

@@ -72,6 +72,7 @@
                         android:scaleX="0.5"
                         android:scaleY="0.5"
                         android:padding="0dp"
+                        android:isIndicator="true"
                         android:layout_alignParentEnd="true"
                         android:layout_below="@+id/director"
                         android:maxWidth="30dp"
