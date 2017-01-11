@@ -70,7 +70,14 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
             }
         });
 
-        if(f.getIdTheme() == 0) holder.imageView.setImageResource(R.mipmap.ic_launcher);
+        if(f.getIdTheme() == 0) holder.imageView.setImageResource(R.drawable.drama);
+        else if(f.getIdTheme() == 1) holder.imageView.setImageResource(R.drawable.comedy);
+        else if(f.getIdTheme() == 2) holder.imageView.setImageResource(R.drawable.action);
+        else if(f.getIdTheme() == 3) holder.imageView.setImageResource(R.drawable.terror);
+        else if(f.getIdTheme() == 4) holder.imageView.setImageResource(R.drawable.musical);
+        else if(f.getIdTheme() == 5) holder.imageView.setImageResource(R.drawable.fiction);
+        else if(f.getIdTheme() == 6) holder.imageView.setImageResource(R.drawable.infantil);
+
     }
 
 

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 
 import com.example.pr_idi.mydatabaseexample.*;
 
@@ -24,6 +25,7 @@ public class CreationActivity extends AppCompatActivity {
     private EditText any;
     private EditText puntuacio;
     private EditText pais;
+    private Spinner categoria;
 
     private FilmData filmData;
     private ImageButton back;
@@ -61,6 +63,7 @@ public class CreationActivity extends AppCompatActivity {
         any = (EditText) findViewById(R.id.year);
         puntuacio = (EditText) findViewById(R.id.nota);
         pais = (EditText) findViewById(R.id.pais);
+        categoria = (Spinner) findViewById(R.id.spinner);
     }
 
     public void ValidarForm(View _view){
@@ -93,7 +96,16 @@ public class CreationActivity extends AppCompatActivity {
                                 else {
                                     if(puntuacio < 0 || puntuacio > 10) ShowDialog("Dades Mal Introduides", "La puntuació només pot anar del 0 al 10.");
                                     else {
-                                        filmData.createCompleteFile(titolText,directorText,protagonistaText,anyEstrena,puntuacio,paisText);
+                                        int cat = 0;
+                                        Log.e("categoria",categoria.getSelectedItem().toString());
+                                        if(categoria.getSelectedItem().toString().equals("Drama")) cat = 0;
+                                        else if(categoria.getSelectedItem().toString().equals("Comedia")) cat = 1;
+                                        else if(categoria.getSelectedItem().toString().equals("Acction")) cat = 2;
+                                        else if(categoria.getSelectedItem().toString().equals("Terror")) cat = 3;
+                                        else if(categoria.getSelectedItem().toString().equals("Musical")) cat = 4;
+                                        else if(categoria.getSelectedItem().toString().equals("Ciéncia Ficció")) cat = 5;
+                                        else if(categoria.getSelectedItem().toString().equals("Infantil")) cat = 6;
+                                        filmData.createCompleteFile(titolText,directorText,protagonistaText,anyEstrena,puntuacio,paisText,cat);
                                         Intent intent = new Intent(this, com.example.pr_idi.mydatabaseexample.activity.MainActivity.class);
                                         startActivity(intent);
                                         finish();

@@ -10,4 +10,14 @@
     <string name="search_hint">hint</string>
     <string name="title_search">title</string>
     <string name="title_activity_recycle_view_for_year">RecycleViewForYear</string>
+
+    <string-array name="categories">
+        <item>Drama</item>
+        <item>Comedia</item>
+        <item>Acció</item>
+        <item>Terror</item>
+        <item>Musical</item>
+        <item>Ciéncia Ficció</item>
+        <item>Infantil</item>
+    </string-array>
 </resources>

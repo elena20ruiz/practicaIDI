@@ -9,13 +9,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="225dp">
 
         <LinearLayout
             android:orientation="horizontal"
             android:id="@+id/cardContent"
             android:layout_width="match_parent"
-            android:layout_height="165dp"
+            android:layout_height="190dp"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp">
@@ -104,11 +104,6 @@
                         android:layout_toEndOf="@+id/protagonista" />
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -160,7 +155,6 @@
                             android:layout_alignParentTop="true"
                             android:layout_toEndOf="@+id/any" />
                     </RelativeLayout>
-                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"

@@ -38,9 +38,9 @@ public class FilmData {
         dbHelper.close();
     }
 
-    public void createCompleteFile(String title, String director, String protagonist, int year, int puntuation, String country){
+    public void createCompleteFile(String title, String director, String protagonist, int year, int puntuation, String country,int cat){
         ContentValues values = new ContentValues();
-        Log.d("Creating", "Creating " + title + " " + director);
+        Log.d("Creating", "Creating " + title + " " + director + " " + cat);
 
         // Add data: Note that this method only provides title and director
         // Must modify the method to add the full data
@@ -52,7 +52,7 @@ public class FilmData {
         values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, year);
         values.put(MySQLiteHelper.COLUMN_PROTAGONIST, protagonist);
         values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, puntuation);
-        values.put(MySQLiteHelper.COLUMN_ID_THEME, 0);
+        values.put(MySQLiteHelper.COLUMN_ID_THEME, cat);
 
         // Actual insertion of the data using the values variable
         long insertId = database.insert(MySQLiteHelper.TABLE_FILMS, null,
@@ -111,7 +111,7 @@ public class FilmData {
                 + " = " + id, null);
     }
 
-    public List<Film> getAllFilms() {
+    public List<Film> getAllFilmsByYear() {
         List<Film> comments = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
@@ -156,6 +156,7 @@ public class FilmData {
         film.setCountry(cursor.getString(4));
         film.setYear(cursor.getInt(5));
         film.setCritics_rate(cursor.getInt(6));
+        film.setIdTheme(cursor.getInt(7));
         return film;
     }
 

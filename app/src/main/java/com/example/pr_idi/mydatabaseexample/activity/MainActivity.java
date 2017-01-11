@@ -93,10 +93,12 @@ public class MainActivity extends AppCompatActivity
 
 
         //RECYCLE VIEW------------------------------------------------------------------------------
-        List<Film> filmList = new ArrayList<>();
+        filmData = new FilmData(this);
+        filmData.open();
+        List<Film> filmList = filmData.getAllFilmsByYear();
 
-        filmList.add(new Film(0,"Phocahontas","Anonimo"));
-        filmList.add(new Film(1,"Jesucristo SuperStar","Dios"));
+        /*filmList.add(new Film(0,"Phocahontas","Anonimo"));
+        filmList.add(new Film(1,"Jesucristo SuperStar","Dios"));*/
 
 
         rv = (RecyclerView)findViewById(R.id.cardList);

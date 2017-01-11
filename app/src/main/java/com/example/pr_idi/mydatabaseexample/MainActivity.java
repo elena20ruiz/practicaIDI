@@ -20,7 +20,7 @@ public class MainActivity extends ListActivity {
         filmData = new FilmData(this);
         filmData.open();
 
-        List<Film> values = filmData.getAllFilms();
+        List<Film> values = filmData.getAllFilmsByYear();
 
         // use the SimpleCursorAdapter to show the
         // elements in a ListView
