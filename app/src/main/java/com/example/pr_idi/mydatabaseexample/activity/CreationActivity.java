@@ -92,7 +92,7 @@ public class CreationActivity extends AppCompatActivity {
                             else{
                                 int anyEstrena = Integer.parseInt(anyText);
                                 int puntuacio = Integer.parseInt(putuacioFloat);
-                                if(anyEstrena < 1900 || anyEstrena > 2017) ShowDialog("Dades Mal Introduides", "L'any d'estrena només pot anar del 1970 al 2017.");
+                                if(anyEstrena < 1970 || anyEstrena > 2017) ShowDialog("Dades Mal Introduides", "L'any d'estrena només pot anar del 1970 al 2017.");
                                 else {
                                     if(puntuacio < 0 || puntuacio > 10) ShowDialog("Dades Mal Introduides", "La puntuació només pot anar del 0 al 10.");
                                     else {
