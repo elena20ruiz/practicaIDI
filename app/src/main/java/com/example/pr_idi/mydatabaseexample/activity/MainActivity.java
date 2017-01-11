@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity
 
         //TOOLBAR-------------------------------------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setLogo(R.drawable.titulo);
         setSupportActionBar(toolbar);
 
         //FLOATTING BUTTON------------------------------------------------------------------------

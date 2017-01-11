@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:paddingTop="10px" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -36,10 +37,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         fab:fab_icon = "@drawable/add"
-        fab:fab_addButtonColorNormal="?attr/colorPrimary"
+        fab:fab_addButtonColorNormal="@color/colorPrimary"
         fab:fab_addButtonSize="normal"
         fab:fab_labelsPosition="left"
-        fab:fab_labelStyle="@style/Etiquetas">
+        fab:fab_labelStyle="@style/Etiquetas"
+        tools:style="@style/AppTheme">
     </com.getbase.floatingactionbutton.FloatingActionButton>
 
 
