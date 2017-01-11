@@ -3,9 +3,11 @@ package com.example.pr_idi.mydatabaseexample;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Rating;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -76,6 +80,23 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
             }
         });
 
+        holder.botoeditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               /* FilmData filmData = new FilmData(context);
+                filmData.open();
+                long id = f.getId();
+                filmData.deleteFilmWithId((int)id);
+
+                Intent intent = ((Activity)context).getIntent();
+                ((Activity)context).finish();
+                context.startActivity(intent);*/
+
+                ShowDialog("EDITAR PUNTUACIÓ",f.getCritics_rate(),(int) f.getId());
+            }
+        });
+
+
         if(f.getIdTheme() == 0) holder.imageView.setImageResource(R.drawable.drama);
         else if(f.getIdTheme() == 1) holder.imageView.setImageResource(R.drawable.comedy);
         else if(f.getIdTheme() == 2) holder.imageView.setImageResource(R.drawable.action);
@@ -111,6 +132,7 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
         TextView id;
         ImageView imageView;
         Button botoborrar;
+        Button botoeditar;
         RatingBar rat;
 
         FilmViewHolderForYear(View itemView) {
@@ -126,9 +148,54 @@ public class RecycleViewAdapterForYear extends RecyclerView.Adapter<RecycleViewA
             rating =      (TextView) itemView.findViewById(R.id.puntuacioName);
             id =      (TextView) itemView.findViewById(R.id.id);
             botoborrar =      (Button) itemView.findViewById(R.id.borrar);
+            botoeditar = (Button) itemView.findViewById(R.id.editar);
             rat = (RatingBar) itemView.findViewById(R.id.ratingBar);
 
 
         }
+    }
+
+    private void ShowDialog(String title, int puntuacio, final int id){
+
+        LayoutInflater li = LayoutInflater.from(context);
+        View promptsView = li.inflate(R.layout.dialog_layout,null);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.editTextDialogUserInput);
+
+        userInput.setText(String.valueOf(puntuacio));
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+        alertDialog.setView(promptsView);
+
+        alertDialog.setTitle(title);
+        alertDialog.setPositiveButton("Cancelar",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        alertDialog.setNegativeButton("Canviar Puntuació",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(Integer.parseInt(String.valueOf(userInput.getText()))<0 || Integer.parseInt(String.valueOf(userInput.getText()))>10){
+                            Toast.makeText(context, "La puntuació ha d'estar entre 0 i 10", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            FilmData filmData = new FilmData(context);
+                            filmData.open();
+
+                            filmData.updateFilm(Integer.parseInt(userInput.getText().toString()), id);
+
+                            Intent intent = ((Activity)context).getIntent();
+                            ((Activity)context).finish();
+                            context.startActivity(intent);
+                        }
+                    }
+                });
+        AlertDialog dialogAux = alertDialog.create();
+        dialogAux.show();
     }
 }

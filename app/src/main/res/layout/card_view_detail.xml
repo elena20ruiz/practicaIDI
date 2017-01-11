@@ -238,7 +238,8 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:text="EDITAR"
+                    android:text="EDITAR PUNTUACIO"
+                    android:id="@+id/editar"
                     android:background="@drawable/button_editar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
