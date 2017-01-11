@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FilmData filmData;
-    private FloatingActionsMenu fabMenu;
+    private FloatingActionButton fabMenu;
     private FloatingActionButton fabCreate;
     private RecyclerView rv;
     private RecyclerViewAdapter adapter;
@@ -58,26 +58,13 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //FLOATTING BUTTON------------------------------------------------------------------------
-        fabMenu = (FloatingActionsMenu) findViewById(R.id.menu_fab);
-        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+        fabMenu = (FloatingActionButton) findViewById(R.id.menu_fab);
+        fabMenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onMenuExpanded() {
-                fabMenu.expand();
-                fabCreate = (FloatingActionButton) findViewById(R.id.action_insert_film);
-                fabCreate.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        Intent insertFilmIntent = new Intent(context, CreationActivity.class);
-                        startActivity(insertFilmIntent);
-
-                    }
-                });
+            public void onClick(View v) {
+                Intent insertFilmIntent = new Intent(context, CreationActivity.class);
+                startActivity(insertFilmIntent);
             }
-
-            @Override
-            public void onMenuCollapsed() {
-                fabMenu.collapse();
-            }
-
         });
 
         //ACTION BAR-------------------------------------------------------------------------------
@@ -206,6 +193,21 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
         alertDialog.show();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            List<Film> films = filmData.getAuthorFilms(query);
+            RecyclerViewAdapter rva = new RecyclerViewAdapter(films);
+            rv.setAdapter(rva);
+        }
     }
 
 }

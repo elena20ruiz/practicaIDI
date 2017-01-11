@@ -115,7 +115,7 @@ public class FilmData {
         List<Film> comments = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
-                allColumns, null, null, null, null, null);
+                allColumns, null, null, null, null, MySQLiteHelper.COLUMN_YEAR_RELEASE + " DESC");
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
